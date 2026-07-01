@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e-com-app
+  namespace: nginx
+  labels:
+    app: e-com-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: e-com-app # Changed from nginx to e-com-app
+  template:
+    metadata:
+      labels:
+        app: e-com-app # Changed from nginx to e-com-app
+    spec:
+      containers:
+      - name: e-comm
+        image: nmerhjas/e-commerce-app
+        ports:
+        - containerPort: 3000 # changed from 80 to 3000 as the app runs on that port (what your app container runs on)
