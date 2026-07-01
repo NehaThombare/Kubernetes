@@ -1,0 +1,20 @@
+kind: DaemonSet
+apiVersion: apps/v1   # <-- Fixed the spelling here
+metadata:
+  name: nginx-daemonsets
+  namespace: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: nginx-daemon-pod
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx         # <-- Shifted left to align under 'containers'
+        image: nginx:latest
+        ports:
+        - containerPort: 80

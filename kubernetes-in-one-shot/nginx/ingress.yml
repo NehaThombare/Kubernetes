@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-notes-ingress
+  namespace: nginx
+  annotations:
+    # Dynamically captures whatever is in the second parentheses group (.*) and appends it to the target
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - http:
+      paths:
+      # 1. Nginx Welcome Page Route
+      - path: /nginx(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+
+      # 2. E-Commerce App Route (Captures /ecom and all sub-paths/assets cleanly)
+      - path: /ecom(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: e-com-app
+            port:
+              number: 8000
+
+      # 3. Notes App Root Route (Catch-all fallback at the bottom)
+      - path: /()(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: notes-app-service
+            port:
+              number: 8000
