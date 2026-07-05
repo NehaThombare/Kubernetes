@@ -20,3 +20,11 @@ spec:
         image: nmerhjas/nodes-app-k8s
         ports:
         - containerPort: 8000
+        livenessProbe:          #To check wheter your pod is live on the specific port
+          httpGet:
+            path: /
+            port: 8000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000

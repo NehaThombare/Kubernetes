@@ -18,9 +18,16 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
+        resources:       #It sets limit for cpu and memory usage
+          requests:       #Otherwise only 1 pod will take up  the entire memory and other pods will fail
+            cpu: 100m     #Minimum required 
+            memory: 128Mi
+          limits:
+            cpu: 200m     #Max required
+            memory: 256Mi
         volumeMounts:
         - name: my-volume
-          mountPath: /var/www/html
+          mountPath: /usr/share/nginx/html
       volumes:
       - name: my-volume
         persistentVolumeClaim:
