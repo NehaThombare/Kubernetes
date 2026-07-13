@@ -1,0 +1,22 @@
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v2
+metadata:
+  name: apache-hpa
+  namespace: apache
+
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: apache-deployment
+    apiVersion: apps/v1
+   
+  minReplicas: 1     #Normal traffic 1 pod
+  maxReplicas: 5      #When traffic increases 5 pods should run
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:                     
+          type: Utilization  #When utilization of cpu reaches 5% then create replicas
+          averageUtilization: 5

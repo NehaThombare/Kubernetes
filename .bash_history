@@ -763,3 +763,168 @@ cd kubernetes-in-one-shot/
 cd nginx/
 kubectl taint node neha-cluster-worker2 prod=true:NoSchedule
 vi pod.yml 
+cd kubernetes-in-one-shot/
+cd nginx/
+vi pod.yml 
+kubectl apply -f pod.yml 
+vi pod.yml 
+kubectl apply -f pod.yml 
+kubectl get pods -n nginx
+kubectl delete pod/nginx-pod -n nginx
+kubectl get pods -n nginx
+kubectl apply -f pod.yml 
+kubectl get pods -n nginx
+cd ..
+git add .
+git status
+git add kubernetes-in-one-shot/
+git status
+git commit -m "Resource-limits, Probes, Taint & Tolerance"
+git push origin main 
+cd kubernetes-in-one-shot/
+cd nginx/
+kubectl get nodes
+kubectl top node
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.1/components.yaml
+kubectl -n kube-system edit deployment metrics-server
+kubectl -n kube-system rollout restart deployment metrics-server
+kubectl get pods -n kube-system 
+kubectl taint node neha-cluster-worker2 prod=true:NoSchedule-
+kubectl taint node neha-cluster-worker3 prod=true:NoSchedule-
+kubectl taint node neha-cluster-worker prod=true:NoSchedule-
+kubectl get pods -n kube-system 
+kubectl top node
+kubectl delete -f pod.yml 
+kubectl top pod
+kubectl get pods -n nginx
+kubectl get pods
+kubectl delete pod/bar-app
+kubectl delete pod/foo-app
+cd ..
+mkdir apache
+ls
+cd apache/
+vi namespace.yml
+kubectl apply -f namespace.yml 
+vi deployment.yml
+kubectl apply -f deployment.yml 
+vi deployment.yml
+kubectl apply -f deployment.yml 
+vi deployment.yml 
+kubectl apply -f deployment.yml 
+vi de
+vi deployment.yml 
+kubectl apply -f deployment.yml 
+vi deployment.yml 
+kubectl apply -f deployment.yml 
+vi deployment.yml 
+kubectl apply -f deployment.yml 
+kubectl get pods -n apache 
+vi service.yml
+kubectl apply -f service.yml 
+vi service.yml 
+kubectl apply -f service.yml 
+kubectl get all
+kubectl get all -n apache
+cd kubernetes-in-one-shot/
+cd apache/
+ls
+kubectl port-forward service/apache-service -n apache 82:80 --address=0.0.0.0
+sudo -E kubectl port-forward service/apache-service -n apache 82:80 --address=0.0.0.0
+kubectl port-forward service/apache-service -n apache 8082:80 --address=0.0.0.0
+clear
+vi hpa.yml
+kubectl get pods -n apache 
+ls
+cd kubernetes-in-one-shot/
+ls
+cd apache/
+ls
+kubectl port-forward service/apache-service -n apache 82:80 --address=0.0.0.0  
+sudo kubectl port-forward service/apache-service -n apache 82:80 --address=0.0.0.0 --kubeconfig=$HOME/.kube/config
+kubectl apply -f hpa.yml 
+kubectl get hpa -n apache
+kubectl run -it load-generator --image=busybox -n apache -- bash
+kubectl run -it load-generator --image=busybox -n apache -- /bin/sh
+kubectl delete pod load-generator -n apache
+kubectl run -it load-generator --image=busybox -n apache 
+kubectl get pods -n apache
+kubectl run -it load-generator --image=busybox -n apache 
+kubectl delete pod load-generator -n apache
+kubectl run -it load-generator --image=busybox -n apache /bin/sh
+xit
+cd kubernetes-in-one-shot/
+cd apache/
+kubectl run -it load-generator --image=busybox -n apache /bin/sh
+kubectl delete pod load-generator -n apache
+kubectl run -it load-generator --image=busybox -n apache /bin/sh
+kubectl get pods -n apache
+kubectl run -it load-generator --image=busybox -n apache /bin/sh
+cd kubernetes-in-one-shot/
+cd apache/
+kubectl delete pod load-generator -n apache
+kubectl run -it load-generator --image=busybox -n apache /bin/sh
+cd kubernetes-in-one-shot/
+cd apache/
+kubectl get pods -n apache
+kubectl get hpa -n apache
+kubectl scale deployment apache-deployment --replicas=1 -n apache
+watch kubectl get pods -n apache
+kubectl delete -f deployment.yml 
+kubectl apply -f deployment.yml 
+watch kubectl get pods -n apache
+kubectl get pods -n apache
+kubectl apply -f hpa.yml 
+kubectl get pods -n apache
+ls
+cd ..
+cd django-notes-app/
+cd k8s/
+vi deployment.yaml 
+vi hpa.yml
+kubectl apply -f namespace.yml 
+kubectl apply -f deployment.yaml 
+kubectl apply -f service.yml 
+kubectl apply -f hpa.yml 
+kubectl get hpa -n nginx
+kubectl get pods -n nginx
+cd kubernetes-in-one-shot/
+cd django-notes-app/
+cd k8s/
+kubectl get hpa -n nginx
+kubectl get pods -n ngix
+kubectl get pods -n nginx
+kubectl delete namespaces nginx 
+cd ..
+cd apache/
+git clone https://github.com/kubernetes/autoscaler.git
+ls
+cd autoscaler/
+ls
+cd vertical-pod-autoscaler/
+ls
+./hack/vpa-up.sh 
+cd ..
+vi vpa.yml
+kubectl get pods -n apache
+kubectl delete -f hpa.yml
+kubectl get hpa -n apache
+ls
+vi vpa.yml 
+mv vpa.yml apache
+cd ..
+ls
+cd autoscaler/
+ls
+cd apa
+vi apache 
+mv apache ~/kubernetes-in-one-shot/apache/
+cd ..
+ls
+vi apache 
+mv apache vpa.yml
+ls
+kubectl delete -f hpa.yml 
+kubectl apply -f vpa.yml 
+kubectl get vpa -n apache
+kubectl run -i --tty load-generator --image=busybox -n apache /bin/sh

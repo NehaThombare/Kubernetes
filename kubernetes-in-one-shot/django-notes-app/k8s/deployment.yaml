@@ -20,6 +20,13 @@ spec:
         image: nmerhjas/nodes-app-k8s
         ports:
         - containerPort: 8000
+        resources:
+          requests:      #for limited use of resource
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
         livenessProbe:          #To check wheter your pod is live on the specific port
           httpGet:
             path: /
