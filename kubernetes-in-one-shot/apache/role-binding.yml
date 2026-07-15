@@ -1,0 +1,15 @@
+kind: RoleBinding      #This file helps bind the role and service-account with each other so that the access limits mentioned in role file get applied to service-account
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: apache-manager-rolebinding
+  namespace: apache
+
+subjects:
+- kind: User
+  name: apache-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:       #the role you want to assign to the apache-user you need to mention here
+  kind: Role
+  name: apache-manager
+  apiGroup: rbac.authorization.k8s.io
+

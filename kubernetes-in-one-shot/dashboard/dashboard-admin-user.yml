@@ -1,0 +1,24 @@
+#In this file we are creating our user i.e admin-user and binding it with the cluster-admin role create by link
+
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+
+---
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: admin-user-binding
+  namespace: kubernetes-dashboard      #this namespace is created using the link on github
+
+subjects:
+- kind: ServiceAccount      #Our user binding with cluster-admin role
+  name: admin-user
+  namespace: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin

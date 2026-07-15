@@ -20,3 +20,11 @@ spec:
         image: nmerhjas/e-commerce-app
         ports:
         - containerPort: 3000 # changed from 80 to 3000 as the app runs on that port (what your app container runs on)
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+

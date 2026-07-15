@@ -1,0 +1,12 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: apache-manager
+  namespace: apache
+rules:
+  - apiGroups: ["*"]   # * this means all 
+    resources: ["pods","deployments","services"]
+    verbs: ["get"]  #"apply","watch","delete","create","patch"]   #this allows actions like kubectl apply,delete,etc
+
+
+
