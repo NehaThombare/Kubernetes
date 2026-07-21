@@ -1,0 +1,11 @@
+kind: DevOpsBatch
+apiVersion: neha.com/v1
+metadata:
+  name: batch-1
+
+spec:
+  name: DevOps Batch
+  duration: 3 months from July 2026
+  platform: neha.com
+  mode: Live
+
